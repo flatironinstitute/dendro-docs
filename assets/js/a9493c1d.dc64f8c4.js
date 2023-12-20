@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdendro_docs=self.webpackChunkdendro_docs||[]).push([[828],{208:e=>{e.exports=JSON.parse('{"label":"neuroscience","permalink":"/dendro-docs/blog/tags/neuroscience","allTagsPath":"/dendro-docs/blog/tags","count":1,"unlisted":false}')}}]);
