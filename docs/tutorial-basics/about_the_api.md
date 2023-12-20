@@ -9,8 +9,6 @@ The Dendro API is implemented using Python with [FastAPI](https://fastapi.tiango
 
 Here is the [ReDoc-generated documentation](https://dendro.vercel.app/redoc) and the [Swagger UI-generated documentation](https://dendro.vercel.app/docs).
 
-Here is the source code: [index.py](../api/index.py) and [api_helpers](../python/dendro/api_helpers).
-
 
 ## GUI
 
