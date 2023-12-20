@@ -16,7 +16,9 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'flatironinstitute', // Usually your GitHub org/user name.
-  projectName: 'dendro', // Usually your repo name.
+  projectName: 'dendro-docs', // Usually your repo name.
+  deploymentBranch: 'gh-pages', // Deployment branch.
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
