@@ -117,10 +117,8 @@ letter_count/
 Before connecting it to the web framework, it's best to test things locally first. Create a sample context file called `sample_context_1.yaml` with the following content
 
 ```yaml
-input:
-  url: https://filesamples.com/samples/document/txt/sample3.txt
-output:
-  output_file_name: sample_output_1.json
+input: "https://filesamples.com/samples/document/txt/sample3.txt"
+output: "./sample_output_1.json"
 letter: "d"
 ```
 
