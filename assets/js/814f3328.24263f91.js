@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdendro_docs=self.webpackChunkdendro_docs||[]).push([[535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Dendro Welcome","permalink":"/dendro-docs/blog/dendro-welcome","unlisted":false}]}')}}]);
