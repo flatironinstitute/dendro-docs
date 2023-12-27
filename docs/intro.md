@@ -15,14 +15,14 @@ Dendro is a web application and compute framework aimed at researchers who want 
 Reach out to the authors if you are interested in **beta testing** Dendro. You can use it in the cloud *or* with your local resources.
 
 * [Access the live site](https://dendro.vercel.app) (it's a prototype!)
-* [Learn how to host a Dendro compute resource](./tutorial-basics/host_compute_resource.md)
-* [Learn how to create a custom Dendro processing app](./tutorial-basics/create_dendro_app.md)
+* [Learn how to host a Dendro compute resource](./howto/host_compute_resource.md)
+* [Learn how to create a custom Dendro processing app](./howto/create_dendro_app.md)
 
 ## System Requirements
 
 To use Dendro, you only need a web browser. No additional software installation is required. Simply open your preferred web browser and navigate to the [live site](https://dendro.vercel.app) to get started.
 
-If you want to [host your own compute resource](./tutorial-basics/host_compute_resource.md) for processing, you will need a Linux machine with optional access to a Slurm cluster or AWS resources.
+If you want to [host your own compute resource](./howto/host_compute_resource.md) for processing, you will need a Linux machine with optional access to a Slurm cluster or AWS resources.
 
 ## Getting started
 
@@ -44,7 +44,7 @@ Once you have created a Dendro project associated with a dandiset (see above) yo
 
 ### Run spike sorting
 
-Once you have imported NWB files from DANDI into your Dendro project, you can begin processing your data. At this point you will need to select a compute resource. By default a very limited default compute resource will be used, which is okay for quick tests. For more serious processing, you will need to [set up your own compute resource](./tutorial-basics/host_compute_resource.md). You can select the compute resource by clicking the "Settings" button on the "Project home" tab.
+Once you have imported NWB files from DANDI into your Dendro project, you can begin processing your data. At this point you will need to select a compute resource. By default a very limited default compute resource will be used, which is okay for quick tests. For more serious processing, you will need to [set up your own compute resource](./howto/host_compute_resource.md). You can select the compute resource by clicking the "Settings" button on the "Project home" tab.
 
 Once you have selected the compute resource for your project, you can select files for spike sorting using the checkboxes and then click "Run spike sorting". Choose the desired spike sorter, set the desired sorting parameters, and click "Submit". Note that in order to run spike sorting, your NWB files will need to have the appropriate ElectricalSeries data objects in the acquisition section as well as the appropriate probe geometry.
 
@@ -68,11 +68,11 @@ Then, in the [Dendro web interface](https://dendro.vercel.app/), click the key i
 
 ### Hosting a compute resource
 
-See [hosting a compute resource](./tutorial-basics/host_compute_resource.md).
+See [hosting a compute resource](./howto/host_compute_resource.md).
 
 ### Contribute a custom processing app for spike sorting
 
-See [create a custom processing app](./tutorial-basics/create_dendro_app.md).
+See [create a custom processing app](./howto/create_dendro_app.md).
 
 ### Projects, Files and Jobs
 
@@ -98,11 +98,11 @@ As the project matures, we will add more apps to this list. Users can also contr
 
 ### Using AWS Batch
 
-See [doc/iac_aws_batch.md](./tutorial-basics/iac_aws_batch.md).
+See [doc/iac_aws_batch.md](./howto/iac_aws_batch.md).
 
 ### For developers
 
-See [doc/for_developers.md](./tutorial-basics/for_developers.md).
+See [doc/for_developers.md](./howto/for_developers.md).
 
 ### LICENSE
 
