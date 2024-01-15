@@ -5,38 +5,61 @@ sidebar_label: 'Host a Compute Resource'
 
 # Hosting a Dendro compute resource
 
+:::info Default Compute Resource
+
 Each Dendro project comes equipped with a dedicated compute resource for executing analysis jobs. The default setting uses a compute resource provided by the authors with limitations on CPU, memory, and concurrent jobs, shared among all users. This public resource should only be used for testing with small jobs. Contact one of the authors if you would like to run more intensive processing or configure your own compute resources.
 
-Prerequisites
+:::
+
+
+![dendro diagram](/img/dendro-diagram.png)
+Figure 1 - Diagram of Dendro architecture.
+
+In order to submit Dendro jobs, you will need to host a compute resource. This can be done on your local machine, or on a cloud service like AWS. The compute resource is composed of two parts: a controller node and worker nodes.
+
+The **controller node** is where the Dendro Daemon process runs. This is a lightweight process that will comunicate with the central services, subscribe to a PubSub service to accept new job requests and submit these jobs to the worker nodes. The controller node should hold the credentials necessary to submit jobs to the worker nodes.
+
+**Worker nodes** are instances where the jobs will actually run. These can be configured to run on multiple locations:
+- on a local machine (same as the Controller node)
+- on a cloud service like AWS
+- on a Slurm cluster
+- on a Kubernetes cluster
+
+
+## Start a compute resource controller
+
+:::info Prerequisites
 
 * Python >= 3.9
 * Docker or apptainer (or singularity >= 3.11)
+:::
 
-Clone this repo, then
+The compute resource controller process should be running when you submit jobs to Dendro.
+
+1. Install the Dendro package:
 
 ```bash
-# install
-cd dendro/python
-pip install -e .[compute_resource]
+pip install dendro
 ```
 
+2. Register a new compute resource. On an empty directory, run the following commands:
+
 ```bash
-# Initialize (one time)
-export COMPUTE_RESOURCE_DIR=/some/path
-export CONTAINER_METHOD=apptainer # or docker (or singularity)
-cd $COMPUTE_RESOURCE_DIR
+export CONTAINER_METHOD=apptainer # or docker
 dendro register-compute-resource
-# Open the provided link in a browser and log in using GitHub
 ```
+
+On the terminal you will see a generated link. Open the link in a browser and log in using GitHub. Finalize the registration process in the web interface. This will create a hidden file called `.dendro_compute_resource.json` in the current directory.
+
+3. Start the compute resource controller process:
 
 ```bash
-# Start the compute resource
-cd $COMPUTE_RESOURCE_DIR
 dendro start-compute-resource
-# Leave this open in a terminal. It is recommended that you use a terminal multiplexer like tmux or screen.
 ```
 
-In the web interface, go to settings for your project, and select your compute resource. New jobs submitted within your project will now use your compute resource for analysis jobs.
+Leave this process open in a terminal, it is recommended that you use a terminal multiplexer like tmux or screen.
+
+
 
 ## Configuring apps for your compute resource
 
