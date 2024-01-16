@@ -1,9 +1,9 @@
 ---
-sidebar_position: 6
-sidebar_label: 'IaC: AWS Batch'
+sidebar_position: 3
+sidebar_label: 'Worker nodes: AWS Batch'
 ---
 
-# AWS Batch Infrastructure as Code (IaC)
+# Dendro Worker nodes on AWS Batch
 
 Here we provide instructions for setting up your compute resource to run Dendro jobs in AWS Batch. First you will need to provision the base AWS Batch infrastructure using CDK. This includes IAM roles, VPC, Security Group, EFS filesystems, Batch Compute Environments and Batch Job Queues. Next you will need to configure your compute resource controller to submit jobs to AWS Batch. Finally, when you submit jobs from the web interface, you must select aws_batch as the run method.
 
