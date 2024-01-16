@@ -58,11 +58,11 @@ On the terminal you will see a generated link. Open the link in a browser and lo
     </div>
 
 ```json
-AVAILABLE_JOB_RUN_METHODS: local, aws_batch
+AVAILABLE_JOB_RUN_METHODS: local
 COMPUTE_RESOURCE_ID: xxxxxxxxxxxxxxxxxxxxxxxxxx
 COMPUTE_RESOURCE_PRIVATE_KEY: xxxxxxxxxxxxxxxxxxxxx
 CONTAINER_METHOD: docker
-DEFAULT_JOB_RUN_METHOD: aws_batch
+DEFAULT_JOB_RUN_METHOD: local
 ```
 </details>
 
