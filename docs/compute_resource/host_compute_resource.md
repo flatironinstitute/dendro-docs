@@ -39,7 +39,7 @@ The compute resource controller process should be running when you submit jobs t
 **1.** Install the Dendro package:
 
 ```bash
-pip install dendro
+pip install dendro[compute_resource]
 ```
 
 **2.** Register a new compute resource. On an empty directory, run the following commands:
