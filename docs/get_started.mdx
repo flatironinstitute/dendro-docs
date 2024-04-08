@@ -1,0 +1,166 @@
+---
+sidebar_position: 2
+sidebar_label: 'Get Started with Dendro'
+---
+
+# Get Started with Dendro
+
+In this tutorial we will go through all the steps needed to run your first Dendro job:
+
+1. Register and start a Compute Resource
+2. Install apps, create projects and import dandisets
+3. Run Dendro jobs
+4. Visualize results on Neurosift
+
+
+## Register and start a Compute Resource
+First, you'll need to register a Compute Resource. Compute Resources are the compute environments where your Dendro jobs will run, you can read about it in more details [here](/docs/category/compute-resource).
+
+Setting up a Compute Resource is a one-time step, and you can re-use the same Compute Resource later on for all your projects.
+For this tutorial, we will setup a Compute Resource on [dandihub](https://hub.dandiarchive.org/), a cloud-based platform that provides a free environment for running lightweight Dendro jobs.
+
+<details>
+<summary>1. Start an instance on [dandihub](https://hub.dandiarchive.org/). We suggest a `Medium` instance, which has 12 CPUs and 32GB of memory.</summary>
+
+![Start a dandihub instance](/img/tutorial_dandi/1_1_start_instance.png)
+
+</details>
+
+<details>
+<summary>2. Within the Jupyter Lab environment, start a `Terminal`.</summary>
+
+![Start a dandihub instance](/img/tutorial_dandi/1_2_start_terminal.png)
+
+</details>
+
+<details>
+<summary>3. Setup the environment for Dendro using the terminal.</summary>
+
+Create a new directory and navigate to it:
+```bash
+mkdir dendro && cd dendro
+```
+
+Install Dendro:
+```bash
+pip install dendro[compute_resource]
+```
+
+Set the environment variable `CONTAINER_METHOD` to `apptainer`:
+```bash
+export CONTAINER_METHOD=apptainer
+```
+
+</details>
+
+<details>
+<summary>4. Register a Compute Resource using the terminal.</summary>
+
+```bash
+dendro register-compute-resource
+```
+
+Click on the link provided, which will redirect you to the Dendro UI in a new browser tab.
+Choose a name for the compute resource, e.g. `tutorial-cr`, and click on `Register`.
+
+</details>
+
+<details>
+<summary>5. Start the Compute Resource using the terminal.</summary>
+
+You can now start the Compute Resource using the terminal.
+```bash
+dendro start-compute-resource
+```
+
+You sould see the message `Compute resource is running`.
+
+Obs.: You can stop the Compute Resource with `CTRL+C`.
+
+</details>
+
+✅ Congratulations! You have successfully registered and started a Compute Resource for Dendro platform.
+
+
+## Install apps, create projects and import dandisets
+
+With a Compute Resource up and running, you can now install apps, create projects and import dandisets to start running Dendro jobs.
+
+Let's start by installing apps to your Computer Resource, through Dendro UI:
+
+<details>
+<summary>1. Select the Compute Resource.</summary>
+
+Click on `Configure compute resources`, at the top right corner.
+
+![Configure compute resources](/img/tutorial_dandi/2_1_configure_compute_resources.png)
+
+Then choose the Compute Resource you just created.
+
+![Choose compute resource](/img/tutorial_dandi/2_2_choose_compute_resource.png)
+
+</details>
+
+<details>
+<summary>2. Add an app.</summary>
+
+Under `Apps` section, click on `Add app`. You will be prompted to enter the app's name and the URL pointing to the spec file.
+
+For this tutorial, we will use the `si_mountainsort5` app, which has its spec URI at `https://github.com/catalystneuro/si-dendro-apps/blob/main/si_mountainsort5/spec.json`.
+
+![Add app](/img/tutorial_dandi/2_3_add_app.png)
+
+</details>
+
+<details>
+<summary>3. Verify that the app was successfully installed.</summary>
+
+Looking back at the dandihub terminal, you should see a success message indicating that the app was successfully installed, similar to the following:
+
+```bash
+Loading app https://github.com/catalystneuro/si-dendro-apps/blob/main/si_mountainsort5/spec.json
+URL: https://raw.githubusercontent.com/catalystneuro/si-dendro-apps/main/si_mountainsort5/spec.json?cachebust=xxxxxxxxxxxxxxxxxxxxxxxxx
+  processors: spikeinterface_pipeline_mountainsort5
+```
+
+</details>
+
+✅ Great! You have successfully installed an app to your Compute Resource. This means you can now run jobs using this app, in this Compute Resource.
+
+Now, let's create a project and import a dandiset to it.
+
+<details>
+<summary>1. Create a new project </summary>
+
+</details>
+
+- Click on `Manage projects`, at the top right corner
+- Click on `Create a new project`, choose a name for it, e.g. `dendro-tutorial-project`
+- At the project’s page, under `Compute Resource`, click on `Select a different compute resource for this project`, and select the compute resource you just created in the previous steps.
+
+Import a dandiset to your Dendro project:
+- At the left side navigation menu, click on `DANDI Import`
+- Add the dandiset ID `000409`
+- Choose the `sub-CSHL045/sub-CSHL045_ses-46794e05-3f6a-4d35-afb3-9165091a5a74_behavior+ecephys+image.nwb` file and click on `Import selected assets`.
+
+## Run Dendro jobs
+Next, we will run a spike sorting job using this file:
+- At the left side navigation menu, click on `Files`
+- Select the file you just imported, then click on `Spike sorting`
+- Choose the `spikeinterface_pipeline_mountainsort5` processor
+
+At this point, you can take some time to explore the vast number of options the processor has. Here’s a couple of relevant ones:
+- select the `Run method = local` and a proper number of CPUs and Memory, given the dandihub instance you are running.
+- Select a longer `Time` if you want to process the entire data, as opposed to just a subset of it with `stub_test` (see next step). A general rule of thumb for Neuropixels recordings is to choose a minum job time of 3x the total recording duration.
+- `recording_context` contains options for the interface with the input file. E.g. you can make this job just a quick try run by selecting `stub_test`.
+- `preprocessing_context` contains options for the preprocessing steps, including signal filtering, detection of bad channels and motion correction.
+- `spikesorting_context` contains options for the spike sorting algorithm
+- `postprocessing_context` contains options for postprocessing the sorting results, including quality metrics extraction.
+- `curation_context` allows you to enter a custom query for curation of the sorting results.
+
+- Click on `Submit job(s)`.
+- At the `Jobs` page, click on `approve` to
+
+
+
+## Visualize results on Neurosift
