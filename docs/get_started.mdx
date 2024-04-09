@@ -5,13 +5,13 @@ sidebar_label: 'Get Started with Dendro'
 
 # Get Started with Dendro
 
-In this tutorial we will go through all the steps needed to run your first Dendro job:
+In this tutorial we will go through all the steps needed to run your first data processing job on Dendro, from scratch:
 
-1. Register and start a Compute Resource
-2. Install apps
-3. Create projects and import dandisets
-4. Run jobs
-5. Visualize results on Neurosift
+1. Register and start a Compute Resource hosted on [dandihub](https://hub.dandiarchive.org/).
+2. Install an app for spike sorting using the [Mountainsort5](https://github.com/flatironinstitute/mountainsort5) algorithm.
+3. Create a project and import assets from [DANDI Archive](https://dandiarchive.org/).
+4. Run jobs.
+5. Visualize results on [Neurosift](https://neurosift.app/).
 
 
 ## Register and start a Compute Resource
@@ -23,14 +23,16 @@ For this tutorial, we will setup a Compute Resource on [dandihub](https://hub.da
 <details>
 <summary>1. Start an instance on [dandihub](https://hub.dandiarchive.org/).</summary>
 
-We suggest a `Medium` instance, which has 12 CPUs and 32GB of memory.
+We suggest a `Medium` instance, which has 12 CPUs and 32GB of memory. This might take a few minutes to start.
 
 ![Start a dandihub instance](/img/tutorial_dandi/1_1_start_instance.png)
 
 </details>
 
 <details>
-<summary>2. Within the Jupyter Lab environment, start a `Terminal`.</summary>
+<summary>2. Start a terminal session.</summary>
+
+Within the Jupyter Lab environment, start a `Terminal`.
 
 ![Start a dandihub instance](/img/tutorial_dandi/1_2_start_terminal.png)
 
@@ -87,7 +89,9 @@ Obs.: You can stop the Compute Resource with `CTRL+C`.
 
 ## Install apps
 
-With a Compute Resource up and running, you can now install apps to it, using the Dendro UI:
+Dendro encapsulates advanced data processing algorithms into apps. Apps are installed to a Compute Resource, and can be used in multiple projects.
+
+With your Compute Resource up and running, you can now install data processing apps to it, using the Dendro UI:
 
 <details>
 <summary>1. Select the Compute Resource.</summary>
@@ -107,7 +111,9 @@ Then choose the Compute Resource you just created.
 
 Under `Apps` section, click on `Add app`. You will be prompted to enter the app's name and the URL pointing to the spec file.
 
-For this tutorial, we will use the `si_mountainsort5` app, which has its spec URI at `https://github.com/catalystneuro/si-dendro-apps/blob/main/si_mountainsort5/spec.json`.
+For this tutorial, we will use the [SpikeInterface Pipeline - Mountainsort5](https://github.com/catalystneuro/si-dendro-apps) app to perform spike sorting on an electrophysiology dataset.
+
+The app spec file is located at `https://github.com/catalystneuro/si-dendro-apps/blob/main/si_mountainsort5/spec.json`.
 
 ![Add app](/img/tutorial_dandi/2_3_add_app.png)
 
@@ -187,12 +193,22 @@ Choose the `sub-CSHL045/sub-CSHL045_ses-46794e05-3f6a-4d35-afb3-9165091a5a74_beh
 
 Up to this point, you have:
 - Registered and started a Compute Resource
-- Installed an app
-- Created a project and imported a dandiset asset
+- Installed a spike sorting app
+- Created a project and imported a dandiset asset to it
 
-Next, we will run a spike sorting job using this file:
-- At the left side navigation menu, click on `Files`
-- Select the file you just imported, then click on `Spike sorting`
+Next, we will run a spike sorting job on the imported file:
+
+<details>
+<summary>1. Select the file with the source data.</summary>
+
+At the left side navigation menu, click on `Files`. Select the file you just imported, then click on `Spike sorting`.
+
+![Select file](/img/tutorial_dandi/4_1_select_file.png)
+
+</details>
+
+
+
 - Choose the `spikeinterface_pipeline_mountainsort5` processor
 
 At this point, you can take some time to explore the vast number of options the processor has. Here’s a couple of relevant ones:
