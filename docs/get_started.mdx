@@ -8,9 +8,10 @@ sidebar_label: 'Get Started with Dendro'
 In this tutorial we will go through all the steps needed to run your first Dendro job:
 
 1. Register and start a Compute Resource
-2. Install apps, create projects and import dandisets
-3. Run Dendro jobs
-4. Visualize results on Neurosift
+2. Install apps
+3. Create projects and import dandisets
+4. Run jobs
+5. Visualize results on Neurosift
 
 
 ## Register and start a Compute Resource
@@ -20,7 +21,9 @@ Setting up a Compute Resource is a one-time step, and you can re-use the same Co
 For this tutorial, we will setup a Compute Resource on [dandihub](https://hub.dandiarchive.org/), a cloud-based platform that provides a free environment for running lightweight Dendro jobs.
 
 <details>
-<summary>1. Start an instance on [dandihub](https://hub.dandiarchive.org/). We suggest a `Medium` instance, which has 12 CPUs and 32GB of memory.</summary>
+<summary>1. Start an instance on [dandihub](https://hub.dandiarchive.org/).</summary>
+
+We suggest a `Medium` instance, which has 12 CPUs and 32GB of memory.
 
 ![Start a dandihub instance](/img/tutorial_dandi/1_1_start_instance.png)
 
@@ -82,11 +85,9 @@ Obs.: You can stop the Compute Resource with `CTRL+C`.
 ✅ Congratulations! You have successfully registered and started a Compute Resource for Dendro platform.
 
 
-## Install apps, create projects and import dandisets
+## Install apps
 
-With a Compute Resource up and running, you can now install apps, create projects and import dandisets to start running Dendro jobs.
-
-Let's start by installing apps to your Computer Resource, through Dendro UI:
+With a Compute Resource up and running, you can now install apps to it, using the Dendro UI:
 
 <details>
 <summary>1. Select the Compute Resource.</summary>
@@ -127,23 +128,68 @@ URL: https://raw.githubusercontent.com/catalystneuro/si-dendro-apps/main/si_moun
 
 ✅ Great! You have successfully installed an app to your Compute Resource. This means you can now run jobs using this app, in this Compute Resource.
 
-Now, let's create a project and import a dandiset to it.
+
+## Create projects and import dandisets
+
+In Dendro, projects are the main organizational unit for a given collection of imported data and outputs from jobs. A project can contain multiple dandisets and use different compute resources.
+
+Let's create a project and choose a Compute Resource for it:
 
 <details>
-<summary>1. Create a new project </summary>
+<summary>1. Create a new project.</summary>
+
+Click on `Manage projects`, at the top right corner:
+
+![Manage projects](/img/tutorial_dandi/3_1_manage_projects.png)
+
+At the projects management page, click on `Create a new project` and choose a name for it, e.g. `tutorial-project`. You should be redirected to the new project's page.
+</details>
+
+
+<details>
+<summary>2. Select a Compute Resource for the project.</summary>
+
+At the project’s page, under `Compute Resource`, click on `Select a different compute resource for this project`, and select the compute resource you just created in the previous steps.
+
+![Select Compute Resource](/img/tutorial_dandi/3_2_select_cr.png)
 
 </details>
 
-- Click on `Manage projects`, at the top right corner
-- Click on `Create a new project`, choose a name for it, e.g. `dendro-tutorial-project`
-- At the project’s page, under `Compute Resource`, click on `Select a different compute resource for this project`, and select the compute resource you just created in the previous steps.
 
-Import a dandiset to your Dendro project:
-- At the left side navigation menu, click on `DANDI Import`
-- Add the dandiset ID `000409`
-- Choose the `sub-CSHL045/sub-CSHL045_ses-46794e05-3f6a-4d35-afb3-9165091a5a74_behavior+ecephys+image.nwb` file and click on `Import selected assets`.
+Projects can contain multiple dandisets, which can be imported from DANDI Archive directly through the Dendro UI. Let's import a dandiset to your Dendro project:
+
+<details>
+<summary>3. Add a dandiset to the project.</summary>
+
+Click on `DANDI Import`, at the left side navigation menu, then click on `Add new dandiset to project`. Enter the dandiset ID, e.g. `000409`, and click on `OK`.
+
+![DANDI Import](/img/tutorial_dandi/3_3_import_dandiset.gif)
+
+Now all the assets from this dandiset will be available to be imported into your project.
+
+</details>
+
+
+<details>
+<summary>4. Import assets from a dandiset.</summary>
+
+A dandiset can contain hundreds of assets, and you need to select which ones you want to import to your project. For this tutorial, we will import a single NWB file from the dandiset `000409`.
+
+Choose the `sub-CSHL045/sub-CSHL045_ses-46794e05-3f6a-4d35-afb3-9165091a5a74_behavior+ecephys+image.nwb` file and click on `Import selected assets`.
+
+![Import assets](/img/tutorial_dandi/3_4_import_asset.png)
+
+</details>
+
+✅ Well done! You have successfully created a project and imported a dandiset asset to it. Now it's time to run a job using this file.
 
 ## Run Dendro jobs
+
+Up to this point, you have:
+- Registered and started a Compute Resource
+- Installed an app
+- Created a project and imported a dandiset asset
+
 Next, we will run a spike sorting job using this file:
 - At the left side navigation menu, click on `Files`
 - Select the file you just imported, then click on `Spike sorting`
