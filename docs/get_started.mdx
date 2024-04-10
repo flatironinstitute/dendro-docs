@@ -275,18 +275,26 @@ Next, click on `spikeinterface_pipeline_mountainsort5` processor, this should op
 
 </details>
 
-At this point, you can take some time to explore the vast number of configuration options for the job.
+At this point, you can take some time to explore the vast number of parameters available for the job.
 
 <details>
   <summary>
     <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>2. Explore the job configuration options.</div>
+        <div>2. Explore the job parameters.</div>
         <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
     </span>
   </summary>
 
- Here’s a couple of relevant ones:
-- select the `Run method = local` and a proper number of CPUs and Memory, given the dandihub instance you are running.
+The left side form contains the job parameters:
+- `Run method` - defines where the job will run.
+- `Number of CPUs` - the number of CPUs to be used by the job.
+- `Number of GPUs` - the number of GPUs to be used by the job.
+- `Memory` - the amount of memory to be used by the job.
+- `Time` - the maximum time the job can run.
+
+For this tutorial, you should leave the default values for these parameters.
+
+![Job configurations](/img/tutorial_dandi/4_2_job_configurations.png)
 
 </details>
 
@@ -294,16 +302,18 @@ At this point, you can take some time to explore the vast number of configuratio
 <details>
   <summary>
     <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>3. Explore the processor configuration options.</div>
+        <div>3. Explore the processor parameters.</div>
         <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
     </span>
   </summary>
 
-- Select a longer `Time` if you want to process the entire data, as opposed to just a subset of it with `stub_test` (see next step). A general rule of thumb for Neuropixels recordings is to choose a minum job time of 3x the total recording duration.
-- `recording_context` contains options for the interface with the input file. E.g. you can make this job just a quick try run by selecting `stub_test`.
-- `preprocessing_context` contains options for the preprocessing steps, including signal filtering, detection of bad channels and motion correction.
-- `spikesorting_context` contains options for the spike sorting algorithm
-- `postprocessing_context` contains options for postprocessing the sorting results, including quality metrics extraction.
+The right side form contains the processor parameters.
+
+For the `spikeinterface_pipeline_mountainsort5` processor there are many parameters that can be configured to customize the spike sorting job. Here are some examples:
+- `recording_context` contains parameters for the interface with the input file. E.g. you can make this job just a quick try run by checking `stub_test`.
+- `preprocessing_context` contains parameters for the preprocessing steps, including signal filtering, detection of bad channels and motion correction.
+- `spikesorting_context` contains parameters for the spike sorting algorithm
+- `postprocessing_context` contains parameters for postprocessing the sorting results, including quality metrics extraction.
 - `curation_context` allows you to enter a custom query for curation of the sorting results.
 
 </details>
@@ -312,13 +322,16 @@ At this point, you can take some time to explore the vast number of configuratio
 <details>
   <summary>
     <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>4. Submit the job.</div>
+        <div>4. Load parameters from file.</div>
         <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
     </span>
   </summary>
 
-  - Click on `Submit job(s)`.
-  - At the `Jobs` page, click on `approve` to start the job.
+Dendro job parameters can be saved to a file and loaded later. This is useful for sharing configurations between users or for running the same job multiple times.
+
+For this tutorial, you can load the parameters file from [here](/blabla).
+
+Click on `Load parameters` and choose the file you just downloaded.
 
 </details>
 
@@ -326,14 +339,42 @@ At this point, you can take some time to explore the vast number of configuratio
 <details>
   <summary>
     <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>5. Follow the job progress.</div>
+        <div>5. Submit the job.</div>
         <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
     </span>
   </summary>
 
-You can follow the job's progress in real time.
-  - logs
-  - resources
+Click on `Submit job(s)`:
+
+![Submit job](/img/tutorial_dandi/4_3_submit_job.png)
+
+At the Compute Resource terminal, you should see a logged message indicating that the job was successfully submitted:
+
+```bash
+Starting job xxxxxxxxxxxxx spikeinterface_pipeline_mountainsort5
+Running: apptainer exec ...
+```
+
+</details>
+
+
+<details>
+  <summary>
+    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <div>6. Follow the job progress.</div>
+        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
+    </span>
+  </summary>
+
+You can follow the job's progress in real time. Navigate to the `Jobs` page and select the job you just submitted.
+
+![Check job](/img/tutorial_dandi/4_4_check_job.png)
+
+A panel will open with the job's details, including:
+- General information and status
+- Inputs and output files
+- Resource utilization (updated in real time)
+- Console output logs (updated in real time)
 
 </details>
 
