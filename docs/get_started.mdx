@@ -3,6 +3,7 @@ sidebar_position: 2
 sidebar_label: 'Get Started with Dendro'
 ---
 import NonPropagatingCheckbox from '@site/src/components/NonPropagatingCheckbox/NonPropagatingCheckbox';
+import InteractiveDetails from '@site/src/components/InteractiveDetails/InteractiveDetails';
 
 # Get Started with Dendro
 
@@ -21,41 +22,25 @@ First, you'll need to register a Compute Resource. Compute Resources are the com
 Setting up a Compute Resource is a one-time step, and you can re-use the same Compute Resource later on for all your projects.
 For this tutorial, we will setup a Compute Resource on [dandihub](https://hub.dandiarchive.org/), a cloud-based platform that provides a free environment for running lightweight Dendro jobs.
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>1. Start an instance on <a href="https://hub.dandiarchive.org/">dandihub</a>.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="1. Start an instance on dandihub">
 
 We suggest a `Medium` instance, which has 12 CPUs and 32GB of memory. This might take a few minutes to start.
 
 ![Start a dandihub instance](/img/tutorial_dandi/1_1_start_instance.png)
 
-</details>
+</InteractiveDetails>
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>2. Start a terminal session.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+
+<InteractiveDetails title="2. Start a terminal session">
 
 Within the Jupyter Lab environment, start a `Terminal`.
 
 ![Start a dandihub instance](/img/tutorial_dandi/1_2_start_terminal.png)
 
-</details>
+</InteractiveDetails>
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>3. Setup the environment for Dendro using the terminal.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+
+<InteractiveDetails title="3. Setup the environment for Dendro using the terminal.">
 
 Create a new directory and navigate to it:
 ```bash
@@ -72,15 +57,10 @@ Set the environment variable `CONTAINER_METHOD` to `apptainer`:
 export CONTAINER_METHOD=apptainer
 ```
 
-</details>
+</InteractiveDetails>
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>4. Register a Compute Resource using the terminal.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+
+<InteractiveDetails title="4. Register a Compute Resource using the terminal.">
 
 ```bash
 dendro register-compute-resource
@@ -89,15 +69,10 @@ dendro register-compute-resource
 Click on the link provided, which will redirect you to the Dendro UI in a new browser tab.
 Choose a name for the compute resource, e.g. `tutorial-cr`, and click on `Register`.
 
-</details>
+</InteractiveDetails>
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>5. Start the Compute Resource using the terminal.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+
+<InteractiveDetails title="5. Start the Compute Resource using the terminal.">
 
 You can now start the Compute Resource using the terminal.
 ```bash
@@ -108,7 +83,7 @@ You sould see the message `Compute resource is running`.
 
 Obs.: You can stop the Compute Resource with `CTRL+C`.
 
-</details>
+</InteractiveDetails>
 
 ✅ Congratulations! You have successfully registered and started a Compute Resource for Dendro platform.
 
@@ -119,13 +94,7 @@ Dendro encapsulates advanced data processing algorithms into apps. Apps are inst
 
 With your Compute Resource up and running, you can now install data processing apps to it, using the Dendro UI:
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>1. Select the Compute Resource.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="1. Select the Compute Resource.">
 
 Click on `Configure compute resources`, at the top right corner.
 
@@ -135,15 +104,10 @@ Then choose the Compute Resource you just created.
 
 ![Choose compute resource](/img/tutorial_dandi/2_2_choose_compute_resource.png)
 
-</details>
+</InteractiveDetails>
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>2. Add an app.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+
+<InteractiveDetails title="2. Add an app.">
 
 Under `Apps` section, click on `Add app`. You will be prompted to enter the app's name and the URL pointing to the spec file.
 
@@ -153,15 +117,10 @@ The app spec file is located at `https://github.com/catalystneuro/si-dendro-apps
 
 ![Add app](/img/tutorial_dandi/2_3_add_app.png)
 
-</details>
+</InteractiveDetails>
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>3. Verify that the app was successfully installed.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+
+<InteractiveDetails title="3. Verify that the app was successfully installed.">
 
 Looking back at the dandihub terminal, you should see a success message indicating that the app was successfully installed, similar to the following:
 
@@ -171,7 +130,8 @@ URL: https://raw.githubusercontent.com/catalystneuro/si-dendro-apps/main/si_moun
   processors: spikeinterface_pipeline_mountainsort5
 ```
 
-</details>
+</InteractiveDetails>
+
 
 ✅ Great! You have successfully installed an app to your Compute Resource. This means you can now run jobs using this app, in this Compute Resource.
 
@@ -182,46 +142,29 @@ In Dendro, projects are the main organizational unit for a given collection of i
 
 Let's create a project and choose a Compute Resource for it:
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>1. Create a new project.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="1. Create a new project.">
 
 Click on `Manage projects`, at the top right corner:
 
 ![Manage projects](/img/tutorial_dandi/3_1_manage_projects.png)
 
 At the projects management page, click on `Create a new project` and choose a name for it, e.g. `tutorial-project`. You should be redirected to the new project's page.
-</details>
+
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>2. Select a Compute Resource for the project.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="2. Select a Compute Resource for the project.">
 
 At the project’s page, under `Compute Resource`, click on `Select a different compute resource for this project`, and select the compute resource you just created in the previous steps.
 
 ![Select Compute Resource](/img/tutorial_dandi/3_2_select_cr.png)
 
-</details>
+</InteractiveDetails>
 
 
 Projects can contain multiple dandisets, which can be imported from DANDI Archive directly through the Dendro UI. Let's import a dandiset to your Dendro project:
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>3. Add a dandiset to the project.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="3. Add a dandiset to the project.">
 
 Click on `DANDI Import`, at the left side navigation menu, then click on `Add new dandiset to project`. Enter the dandiset ID, e.g. `000409`, and click on `OK`.
 
@@ -229,16 +172,10 @@ Click on `DANDI Import`, at the left side navigation menu, then click on `Add ne
 
 Now all the assets from this dandiset will be available to be imported into your project.
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>4. Import assets from a dandiset.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="4. Import assets from a dandiset.">
 
 A dandiset can contain hundreds of assets, and you need to select which ones you want to import to your project. For this tutorial, we will import a single NWB file from the dandiset `000409`.
 
@@ -246,9 +183,11 @@ Choose the `sub-CSHL045/sub-CSHL045_ses-46794e05-3f6a-4d35-afb3-9165091a5a74_beh
 
 ![Import assets](/img/tutorial_dandi/3_4_import_asset.png)
 
-</details>
+</InteractiveDetails>
+
 
 ✅ Well done! You have successfully created a project and imported a dandiset asset to it. Now it's time to run a job using this file.
+
 
 ## Run Dendro jobs
 
@@ -259,13 +198,7 @@ Up to this point, you have:
 
 Next, we will run a spike sorting job on the imported file:
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>1. Select the file with the source data.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="1. Select the file with the source data.">
 
 Navigate to the `Files` page, select the file you just imported, and click on `Spike sorting`.
 
@@ -273,17 +206,11 @@ Next, click on `spikeinterface_pipeline_mountainsort5` processor, this should op
 
 ![Select file](/img/tutorial_dandi/4_1_select_file.gif)
 
-</details>
+</InteractiveDetails>
 
 At this point, you can take some time to explore the vast number of parameters available for the job.
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>2. Explore the job parameters.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="2. Explore the job parameters.">
 
 The left side form contains the job parameters:
 - `Run method` - defines where the job will run.
@@ -298,16 +225,10 @@ Change the `Description string in output file name` to something easier to ident
 
 ![Job configurations](/img/tutorial_dandi/4_2_job_configurations.png)
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>3. Explore the processor parameters.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="3. Explore the processor parameters.">
 
 The right side form contains the processor parameters.
 
@@ -318,16 +239,10 @@ For the `spikeinterface_pipeline_mountainsort5` processor there are many paramet
 - `postprocessing_context` contains parameters for postprocessing the sorting results, including quality metrics extraction.
 - `curation_context` allows you to enter a custom query for curation of the sorting results.
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>4. Load parameters from file.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="4. Load parameters from file.">
 
 Dendro job parameters can be saved to a file and loaded later. This is useful for sharing configurations between users or for running the same job multiple times.
 
@@ -335,16 +250,10 @@ For this tutorial, you can download the parameters file from [here](https://raw.
 
 Click on `Load parameters` and choose the file you just downloaded.
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>5. Submit the job.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="5. Submit the job.">
 
 Click on `Submit job(s)`:
 
@@ -357,16 +266,10 @@ Starting job xxxxxxxxxxxxx spikeinterface_pipeline_mountainsort5
 Running: apptainer exec ...
 ```
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>6. Follow the job progress.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="6. Follow the job progress.">
 
 You can follow the job's progress in real time. Navigate to the `Jobs` page and select the job you just submitted.
 
@@ -378,7 +281,7 @@ A panel will open with the job's details, including:
 - Resource utilization (updated in real time)
 - Console output logs (updated in real time)
 
-</details>
+</InteractiveDetails>
 
 ✅ Bravo! You have successfully submitted a spike sorting job on a public electrophysiology dataset!
 
@@ -387,28 +290,16 @@ A panel will open with the job's details, including:
 
 Results are saved as NWB files that can be found under the `generated` folder of the `Files` page. You can visualize and explore the results in multiple ways:
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>1. Check results file information in Dendro.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="1. Check results file information in Dendro.">
 
 Clicking on the output NWB file will open a tab with general information:
 
 ![File info](/img/tutorial_dandi/5_1_file_info.png)
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>2. Open results file in Python.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="2. Open results file in Python.">
 
 Opening the NWB file is a convenient way to explore the results of the spike sorting job in a Python environment.
 
@@ -423,16 +314,10 @@ This will require the following Python packages to be installed:
 pip install h5py pynwb dendro
 ```
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>3. Open results file in Neurosift.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="3. Open results file in Neurosift.">
 
 [Neurosift](https://neurosift.app/) is a web-based platform for visualization of NWB files. It is tightly integrated with Dendro, so you can easily visualize the results of your spike sorting jobs.
 
@@ -442,16 +327,10 @@ To open the results in Neurosift, mark the checkbox of the two files (the import
 
 ![File info](/img/tutorial_dandi/5_3_open_file_neurosift.png)
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>4. Explore results file data on Neurosift. [part 1]</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="4. Explore results file data on Neurosift. [part 1]">
 
 At Neurosift main page, you will see the files metadata at the left side, and the data visualization options at the right side. Neurosift is able to combine the original file data, containing the raw electrophysiology and trials data, with the generated file data, containing the spike sorting results.
 
@@ -463,16 +342,10 @@ At the PSTH tab, you can see the spike sorting results aligned with the session 
 
 ![PSTH](/img/tutorial_dandi/5_4_psth.png)
 
-</details>
+</InteractiveDetails>
 
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>5. Explore results file data on Neurosift. [part 2]</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="5. Explore results file data on Neurosift. [part 2]">
 
 Neurosift provides a wide range of visualization options for exploring the data. Take some time to explore the different tabs and options! Here are some examples of what you can do.
 
@@ -484,7 +357,7 @@ The spiking raster plot:
 
 ![Raster](/img/tutorial_dandi/5_5_raster.png)
 
-</details>
+</InteractiveDetails>
 
 
 ✅ Now you know how to visualize the results of your Dendro jobs!
@@ -494,16 +367,10 @@ The spiking raster plot:
 
 Dendro allows you to upload the results of your jobs back to DANDI Archive. This is a great way to share your data processing results with the scientific community.
 
-<details>
-  <summary>
-    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>1. Select the file to be uploaded.</div>
-        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
-    </span>
-  </summary>
+<InteractiveDetails title="1. Select the file to be uploaded.">
 
 Navigate to the `Files` page, select the file you want to upload, and click on `Upload to DANDI`.
 
 <!-- ![Upload to DANDI](/img/tutorial_dandi/6_1_upload_dandi.png) -->
 
-</details>
+</InteractiveDetails>
