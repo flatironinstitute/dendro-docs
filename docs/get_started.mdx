@@ -405,14 +405,14 @@ Clicking on the output NWB file will open a tab with general information:
 <details>
   <summary>
     <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>[OPTIONAL] Open results file locally.</div>
+        <div>2. Open results file in Python.</div>
         <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
     </span>
   </summary>
 
-This step is optional, but it is a convenient way to explore the results of the spike sorting job in a Python environment.
+Opening the NWB file is a convenient way to explore the results of the spike sorting job in a Python environment.
 
-You can load the results file to your local machine by clicking on `Load NWB file in Python`, copying the code snippet and running it in your local Python environment.
+Click on `Load NWB file in Python`, copy the code snippet and run it in a Jupyter notebook on your dandihub instance or on own machine.
 
 This will require the following Python packages to be installed:
 - h5py
@@ -429,7 +429,7 @@ pip install h5py pynwb dendro
 <details>
   <summary>
     <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>2. Open results file in Neurosift.</div>
+        <div>3. Open results file in Neurosift.</div>
         <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
     </span>
   </summary>
@@ -440,7 +440,7 @@ Neurosift is capable of combining multiple NWB files into a single visualization
 
 To open the results in Neurosift, mark the checkbox of the two files (the imported and the generated) and click on `Open in Neurosift`:
 
-![File info](/img/tutorial_dandi/5_2_open_file_neurosift.png)
+![File info](/img/tutorial_dandi/5_3_open_file_neurosift.png)
 
 </details>
 
@@ -448,7 +448,7 @@ To open the results in Neurosift, mark the checkbox of the two files (the import
 <details>
   <summary>
     <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>3. Explore results file data on Neurosift. [part 1]</div>
+        <div>4. Explore results file data on Neurosift. [part 1]</div>
         <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
     </span>
   </summary>
@@ -457,7 +457,7 @@ At Neurosift main page, you will see the files metadata at the left side, and th
 
 Expand the `intervals` tab and check the the outer checkbox, then expand the `processing/ecephys` tab and check the outer checkbox. Next, click on `Open PSTH for selected items`:
 
-![Neurosift](/img/tutorial_dandi/5_3_open_psth.png)
+![Neurosift](/img/tutorial_dandi/5_4_open_psth.png)
 
 At the PSTH tab, you can see the spike sorting results aligned with the session trials, including the spike raster plot and the peri-stimulus time histogram. Take some time to explore the data, select different units and alignments. Can you find any interesting responses?
 
@@ -469,7 +469,7 @@ At the PSTH tab, you can see the spike sorting results aligned with the session 
 <details>
   <summary>
     <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-        <div>4. Explore results file data on Neurosift. [part 2]</div>
+        <div>5. Explore results file data on Neurosift. [part 2]</div>
         <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
     </span>
   </summary>
@@ -482,7 +482,7 @@ The spikes waveforms plot:
 
 The spiking raster plot:
 
-![Raster](/img/tutorial_dandi/5_6_raster.png)
+![Raster](/img/tutorial_dandi/5_5_raster.png)
 
 </details>
 
