@@ -294,6 +294,8 @@ The left side form contains the job parameters:
 
 For this tutorial, you should leave the default values for these parameters.
 
+Change the `Description string in output file name` to something easier to identify the job result files later on, e.g. `tutorial-ms5`.
+
 ![Job configurations](/img/tutorial_dandi/4_2_job_configurations.png)
 
 </details>
@@ -329,7 +331,7 @@ For the `spikeinterface_pipeline_mountainsort5` processor there are many paramet
 
 Dendro job parameters can be saved to a file and loaded later. This is useful for sharing configurations between users or for running the same job multiple times.
 
-For this tutorial, you can download the parameters file from [here](https://raw.githubusercontent.com/flatironinstitute/dendro-docs/dev/extra_assets/tutorial-ms5.json).
+For this tutorial, you can download the parameters file from [here](https://raw.githubusercontent.com/flatironinstitute/dendro-docs/main/extra_assets/tutorial-ms5.json).
 
 Click on `Load parameters` and choose the file you just downloaded.
 
@@ -381,6 +383,127 @@ A panel will open with the job's details, including:
 ✅ Bravo! You have successfully submitted a spike sorting job on a public electrophysiology dataset!
 
 
-## Visualize results on Neurosift
+## Visualize results
+
+Results are saved as NWB files that can be found under the `generated` folder of the `Files` page. You can visualize and explore the results in multiple ways:
+
+<details>
+  <summary>
+    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <div>1. Check results file information in Dendro.</div>
+        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
+    </span>
+  </summary>
+
+Clicking on the output NWB file will open a tab with general information:
+
+![File info](/img/tutorial_dandi/5_1_file_info.png)
+
+</details>
+
+
+<details>
+  <summary>
+    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <div>[OPTIONAL] Open results file locally.</div>
+        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
+    </span>
+  </summary>
+
+This step is optional, but it is a convenient way to explore the results of the spike sorting job in a Python environment.
+
+You can load the results file to your local machine by clicking on `Load NWB file in Python`, copying the code snippet and running it in your local Python environment.
+
+This will require the following Python packages to be installed:
+- h5py
+- pynwb
+- dendro
+
+```bash
+pip install h5py pynwb dendro
+```
+
+</details>
+
+
+<details>
+  <summary>
+    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <div>2. Open results file in Neurosift.</div>
+        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
+    </span>
+  </summary>
 
 [Neurosift](https://neurosift.app/) is a web-based platform for visualization of NWB files. It is tightly integrated with Dendro, so you can easily visualize the results of your spike sorting jobs.
+
+Neurosift is capable of combining multiple NWB files into a single visualization, which is useful for exploring the results of Dendro jobs together with the original raw data.
+
+To open the results in Neurosift, mark the checkbox of the two files (the imported and the generated) and click on `Open in Neurosift`:
+
+![File info](/img/tutorial_dandi/5_2_open_file_neurosift.png)
+
+</details>
+
+
+<details>
+  <summary>
+    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <div>3. Explore results file data on Neurosift. [part 1]</div>
+        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
+    </span>
+  </summary>
+
+At Neurosift main page, you will see the files metadata at the left side, and the data visualization options at the right side. Neurosift is able to combine the original file data, containing the raw electrophysiology and trials data, with the generated file data, containing the spike sorting results.
+
+Expand the `intervals` tab and check the the outer checkbox, then expand the `processing/ecephys` tab and check the outer checkbox. Next, click on `Open PSTH for selected items`:
+
+![Neurosift](/img/tutorial_dandi/5_3_open_psth.png)
+
+At the PSTH tab, you can see the spike sorting results aligned with the session trials, including the spike raster plot and the peri-stimulus time histogram. Take some time to explore the data, select different units and alignments. Can you find any interesting responses?
+
+![PSTH](/img/tutorial_dandi/5_4_psth.png)
+
+</details>
+
+
+<details>
+  <summary>
+    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <div>4. Explore results file data on Neurosift. [part 2]</div>
+        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
+    </span>
+  </summary>
+
+Neurosift provides a wide range of visualization options for exploring the data. Take some time to explore the different tabs and options! Here are some examples of what you can do.
+
+The spikes waveforms plot:
+
+![Waveforms](/img/tutorial_dandi/5_5_waveforms.png)
+
+The spiking raster plot:
+
+![Raster](/img/tutorial_dandi/5_6_raster.png)
+
+</details>
+
+
+✅ Now you know how to visualize the results of your Dendro jobs!
+
+
+## Upload results to DANDI Archive
+
+Dendro allows you to upload the results of your jobs back to DANDI Archive. This is a great way to share your data processing results with the scientific community.
+
+<details>
+  <summary>
+    <span style={{display: "flex", justifyContent: "space-between", alignItems: "center"}}>
+        <div>1. Select the file to be uploaded.</div>
+        <NonPropagatingCheckbox style={{marginLeft: "auto"}} />
+    </span>
+  </summary>
+
+Navigate to the `Files` page, select the file you want to upload, and click on `Upload to DANDI`.
+
+<!-- ![Upload to DANDI](/img/tutorial_dandi/6_1_upload_dandi.png) -->
+
+</details>

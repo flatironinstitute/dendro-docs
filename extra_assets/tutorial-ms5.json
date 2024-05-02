@@ -5,7 +5,7 @@
     "inputParameters": [
         {
             "name": "job_kwargs.n_jobs",
-            "value": 0.5
+            "value": 0.4
         },
         {
             "name": "job_kwargs.chunk_duration",
@@ -14,6 +14,10 @@
         {
             "name": "job_kwargs.progress_bar",
             "value": false
+        },
+        {
+            "name": "job_kwargs.mp_context",
+            "value": "spawn"
         },
         {
             "name": "recording_context.electrical_series_path",
@@ -33,7 +37,11 @@
         },
         {
             "name": "recording_context.stub_test_duration_sec",
-            "value": 300
+            "value": 1800
+        },
+        {
+            "name": "recording_context.stub_test_channels",
+            "value": "0,128"
         },
         {
             "name": "run_preprocessing",
@@ -617,7 +625,7 @@
         },
         {
             "name": "spikesorting_context.detect_threshold",
-            "value": 5.5
+            "value": 7
         },
         {
             "name": "spikesorting_context.detect_sign",
@@ -629,11 +637,11 @@
         },
         {
             "name": "spikesorting_context.snippet_T1",
-            "value": 20
+            "value": 15
         },
         {
             "name": "spikesorting_context.snippet_T2",
-            "value": 20
+            "value": 35
         },
         {
             "name": "spikesorting_context.npca_per_channel",
@@ -641,11 +649,11 @@
         },
         {
             "name": "spikesorting_context.npca_per_subdivision",
-            "value": 10
+            "value": 3
         },
         {
             "name": "spikesorting_context.snippet_mask_radius",
-            "value": 250
+            "value": 30
         },
         {
             "name": "spikesorting_context.scheme1_detect_channel_radius",
@@ -653,11 +661,11 @@
         },
         {
             "name": "spikesorting_context.scheme2_phase1_detect_channel_radius",
-            "value": 200
+            "value": 30
         },
         {
             "name": "spikesorting_context.scheme2_detect_channel_radius",
-            "value": 50
+            "value": 30
         },
         {
             "name": "spikesorting_context.scheme2_max_num_snippets_per_training_batch",
@@ -665,7 +673,7 @@
         },
         {
             "name": "spikesorting_context.scheme2_training_duration_sec",
-            "value": 300
+            "value": 150
         },
         {
             "name": "spikesorting_context.scheme2_training_recording_sampling_mode",
@@ -970,6 +978,82 @@
         {
             "name": "run_visualization",
             "value": true
+        },
+        {
+            "name": "visualization_context.recording.timeseries.n_snippets_per_segment",
+            "value": 2
+        },
+        {
+            "name": "visualization_context.recording.timeseries.snippet_duration_s",
+            "value": 0.5
+        },
+        {
+            "name": "visualization_context.recording.timeseries.skip",
+            "value": false
+        },
+        {
+            "name": "visualization_context.recording.drift.detection.peak_sign",
+            "value": "neg"
+        },
+        {
+            "name": "visualization_context.recording.drift.detection.detect_threshold",
+            "value": 5
+        },
+        {
+            "name": "visualization_context.recording.drift.detection.exclude_sweep_ms",
+            "value": 0.1
+        },
+        {
+            "name": "visualization_context.recording.drift.localization.ms_before",
+            "value": 0.1
+        },
+        {
+            "name": "visualization_context.recording.drift.localization.ms_after",
+            "value": 0.3
+        },
+        {
+            "name": "visualization_context.recording.drift.localization.radius_um",
+            "value": 100
+        },
+        {
+            "name": "visualization_context.recording.drift.decimation_factor",
+            "value": 30
+        },
+        {
+            "name": "visualization_context.recording.drift.alpha",
+            "value": 0.15
+        },
+        {
+            "name": "visualization_context.recording.drift.vmin",
+            "value": -200
+        },
+        {
+            "name": "visualization_context.recording.drift.vmax",
+            "value": 0
+        },
+        {
+            "name": "visualization_context.recording.drift.cmap",
+            "value": "Greys_r"
+        },
+        {
+            "name": "visualization_context.recording.label",
+            "value": "Recording visualization from SI pipelines"
+        },
+        {
+            "name": "visualization_context.sorting_summary.unit_table_properties",
+            "value": "default_qc"
+        },
+        {
+            "name": "visualization_context.sorting_summary.curation",
+            "value": true
+        },
+        {
+            "name": "visualization_context.sorting_summary.label_choices",
+            "value": "SUA, MUA, noise"
+        },
+        {
+            "name": "visualization_context.sorting_summary.label",
+            "value": "Sorting summary from SI pipelines"
         }
     ],
     "processorSpecParameters": [
@@ -995,6 +1079,17 @@
             "type": "bool",
             "default": false,
             "options": null,
+            "secret": false
+        },
+        {
+            "name": "job_kwargs.mp_context",
+            "description": "Context for multiprocessing. It can be \"fork\" or \"spawn\".",
+            "type": "str",
+            "default": "spawn",
+            "options": [
+                "fork",
+                "spawn"
+            ],
             "secret": false
         },
         {
@@ -1034,6 +1129,14 @@
             "description": "Stub test duration in seconds",
             "type": "float",
             "default": 300,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "recording_context.stub_test_channels",
+            "description": "Stub test comma-separated range of channels",
+            "type": "str",
+            "default": "1, 32",
             "options": null,
             "secret": false
         },
@@ -2215,7 +2318,7 @@
             "name": "spikesorting_context.detect_threshold",
             "description": "Threshold for spike detection",
             "type": "float",
-            "default": 5.5,
+            "default": 7,
             "options": null,
             "secret": false
         },
@@ -2239,7 +2342,7 @@
             "name": "spikesorting_context.snippet_T1",
             "description": "Snippet T1",
             "type": "int",
-            "default": 20,
+            "default": 15,
             "options": null,
             "secret": false
         },
@@ -2247,7 +2350,7 @@
             "name": "spikesorting_context.snippet_T2",
             "description": "Snippet T2",
             "type": "int",
-            "default": 20,
+            "default": 35,
             "options": null,
             "secret": false
         },
@@ -2263,7 +2366,7 @@
             "name": "spikesorting_context.npca_per_subdivision",
             "description": "Number of PCA per subdivision",
             "type": "int",
-            "default": 10,
+            "default": 3,
             "options": null,
             "secret": false
         },
@@ -2271,7 +2374,7 @@
             "name": "spikesorting_context.snippet_mask_radius",
             "description": "Snippet mask radius",
             "type": "int",
-            "default": 250,
+            "default": 30,
             "options": null,
             "secret": false
         },
@@ -2287,7 +2390,7 @@
             "name": "spikesorting_context.scheme2_phase1_detect_channel_radius",
             "description": "Scheme 2 phase 1 detect channel radius",
             "type": "int",
-            "default": 200,
+            "default": 30,
             "options": null,
             "secret": false
         },
@@ -2295,7 +2398,7 @@
             "name": "spikesorting_context.scheme2_detect_channel_radius",
             "description": "Scheme 2 detect channel radius",
             "type": "int",
-            "default": 50,
+            "default": 30,
             "options": null,
             "secret": false
         },
@@ -2311,7 +2414,7 @@
             "name": "spikesorting_context.scheme2_training_duration_sec",
             "description": "Scheme 2 training duration in seconds",
             "type": "int",
-            "default": 300,
+            "default": 150,
             "options": null,
             "secret": false
         },
@@ -2936,6 +3039,162 @@
             "description": "Run visualization",
             "type": "bool",
             "default": true,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.timeseries.n_snippets_per_segment",
+            "description": "Number of snippets per segment to visualize.",
+            "type": "int",
+            "default": 2,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.timeseries.snippet_duration_s",
+            "description": "Duration of each snippet in seconds.",
+            "type": "float",
+            "default": 0.5,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.timeseries.skip",
+            "description": "Skip traces visualization.",
+            "type": "bool",
+            "default": false,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.detection.peak_sign",
+            "description": "Peak sign for peak detection.",
+            "type": "str",
+            "default": "neg",
+            "options": [
+                "neg",
+                "pos",
+                "both"
+            ],
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.detection.detect_threshold",
+            "description": "Threshold for peak detection.",
+            "type": "float",
+            "default": 5,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.detection.exclude_sweep_ms",
+            "description": "Exclude sweep in ms around peak detection.",
+            "type": "float",
+            "default": 0.1,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.localization.ms_before",
+            "description": "Time before peak in ms.",
+            "type": "float",
+            "default": 0.1,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.localization.ms_after",
+            "description": "Time after peak in ms.",
+            "type": "float",
+            "default": 0.3,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.localization.radius_um",
+            "description": "Radius in um for sparsifying waveforms before localization.",
+            "type": "float",
+            "default": 100,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.decimation_factor",
+            "description": "The decimation factor for drift visualization. E.g. 30 means that 1 out of 30 spikes is plotted.",
+            "type": "int",
+            "default": 30,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.alpha",
+            "description": "Alpha for scatter plot.",
+            "type": "float",
+            "default": 0.15,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.vmin",
+            "description": "Min value for colormap.",
+            "type": "float",
+            "default": -200,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.vmax",
+            "description": "Max value for colormap.",
+            "type": "float",
+            "default": 0,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.drift.cmap",
+            "description": "Matplotlib colormap for drift visualization.",
+            "type": "str",
+            "default": "Greys_r",
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.recording.label",
+            "description": "Label for the recording.",
+            "type": "str",
+            "default": "Recording visualization from SI pipelines",
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.sorting_summary.unit_table_properties",
+            "description": "Comma-separated list of properties to show in the unit table.",
+            "type": "str",
+            "default": "default_qc",
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.sorting_summary.curation",
+            "description": "Whether to show curation buttons.",
+            "type": "bool",
+            "default": true,
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.sorting_summary.label_choices",
+            "description": "Comma-separated list of labels to choose from (if `curation=True`)",
+            "type": "str",
+            "default": "SUA, MUA, noise",
+            "options": null,
+            "secret": false
+        },
+        {
+            "name": "visualization_context.sorting_summary.label",
+            "description": "Label for the sorting summary.",
+            "type": "str",
+            "default": "Sorting summary from SI pipelines",
             "options": null,
             "secret": false
         }
