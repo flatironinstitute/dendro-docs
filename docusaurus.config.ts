@@ -58,7 +58,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/dendro-social-card.jpg',
+    image: 'img/dendro-social-card.png',
     navbar: {
       title: 'Dendro',
       logo: {
