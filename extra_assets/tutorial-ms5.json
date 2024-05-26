@@ -37,11 +37,11 @@
         },
         {
             "name": "recording_context.stub_test_duration_sec",
-            "value": 1800
+            "value": 3600
         },
         {
             "name": "recording_context.stub_test_channels",
-            "value": "0,128"
+            "value": "100,164"
         },
         {
             "name": "run_preprocessing",
