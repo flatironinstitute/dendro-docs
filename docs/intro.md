@@ -30,7 +30,7 @@ If you want to [host your own compute resource](./compute_resource/host_compute_
 
 To process your data using Dendro, you should first prepare and upload your data to DANDI by creating a public or embargoed dandiset. To convert your neurophysiology data to NWB (Neurodata Without Borders) format, you should use [NeuroConv](https://neuroconv.readthedocs.io/en/main/user_guide/user_guide.html) and/or [nwb-guide](https://github.com/NeurodataWithoutBorders/nwb-guide).
 
-Once your data is in NWB format, create a new dandiset on [DANDI Archive](https://dandiarchive.org/) and then [follow these instructions to upload your data](https://www.dandiarchive.org/handbook/13_upload). If you are not ready to make your data public, you can choose to create an embargoed (private) dandiset and share it with collaborators. If you are only testing the system, you can use the [staging site](https://gui-staging.dandiarchive.org/).
+Once your data is in NWB format, create a new dandiset on [DANDI Archive](https://dandiarchive.org/) and then [follow these instructions to upload your data](https://docs.dandiarchive.org/13_upload). If you are not ready to make your data public, you can choose to create an embargoed (private) dandiset and share it with collaborators. If you are only testing the system, you can use the [staging site](https://gui-staging.dandiarchive.org/).
 
 ### Create a Dendro project
 
